@@ -10,20 +10,15 @@ namespace PlayerManagerMVC
             List<Player> playerlist = new List<Player>()
             {
                 new Player("Jokinhas", 24),
-                new Player("Bugs", 2)
+                new Player("Bugs", 2),
                 new Player("Cat", 500)
-            }
+            };
 
-            // Initialize player comparers
-            compareByName = new CompareByName(true);
-            compareByNameReverse = new CompareByName(false);
+            Controller controller = new Controller(playerlist);
 
-            Program prog = new Program();
+            View view = new View(controller, playerlist);
 
-            controller controller = new controller()
-            View view = new view(controller)
-            
-            controller.Start();
+            controller.Start(view);
         }
 }
 }

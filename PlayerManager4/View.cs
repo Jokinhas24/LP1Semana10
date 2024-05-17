@@ -1,10 +1,21 @@
-using system;
+using System;
+using System.Collections.Generic;
 
 namespace PlayerManagerMVC
 {
     class View : IView
     {
-        private int ShowMenu()
+        private List<Player> model;
+
+        private Controller controller;
+
+        public View(Controller controller, List<Player> model)
+        {
+            this.controller = controller;
+            this.model = model;
+        }
+
+        public int ShowMenu()
         {
             Console.WriteLine("Menu");
             Console.WriteLine("----\n");
@@ -14,31 +25,31 @@ namespace PlayerManagerMVC
             Console.WriteLine("4. Sort players");
             Console.WriteLine("0. Quit\n");
             Console.Write("Your choice > ");
+
             return int.Parse(Console.ReadLine());
         }
 
-        private void EndMessage()
+        public void EndMessage()
         {
-            Console.WriteLine("Bye!")
+            Console.WriteLine("Bye!");
         }
 
-        private void InvalidOption()
+        public void InvalidOption()
         {
-            Console.WriteLine("\n >>>Unknown Option!<<<")
+            Console.WriteLine("\n >>>Unknown Option!<<<");
         }
 
-        private void AfterMenu()
+        public void AfterMenu()
         {
             Console.Write("\nPress any key to continue...");
-                Console.ReadKey(true);
+                Console.ReadLine();
                 Console.WriteLine("\n");
         }
 
-        private void InsertPlayer()
+        public Player InsertPlayer()
         {
             string name;
             int score;
-            Player newPlayer;
 
             Console.WriteLine("\nInsert player");
             Console.WriteLine("-------------\n");
@@ -47,11 +58,10 @@ namespace PlayerManagerMVC
             Console.Write("Score: ");
             score = Convert.ToInt32(Console.ReadLine());
 
-            newPlayer = new Player(name, score);
-            playerList.Add(newPlayer);
+            return new Player(name, score);
         }
 
-        public static void ListPlayers(IEnumerable<Player> playersToList)
+        public void ListPlayers(IEnumerable<Player> playersToList)
         {
             Console.WriteLine("\nList of players");
             Console.WriteLine("-------------\n");
@@ -63,6 +73,26 @@ namespace PlayerManagerMVC
             Console.WriteLine();
         }
 
-        public 
+        public PlayerOrder AskforPlayerOrder()
+        {
+            Console.WriteLine("Player order");
+            Console.WriteLine("------------");
+            Console.WriteLine(
+                $"{(int)PlayerOrder.ByScore}. Order by score");
+            Console.WriteLine(
+                $"{(int)PlayerOrder.ByName}. Order by name");
+            Console.WriteLine(
+                $"{(int)PlayerOrder.ByNameReverse}. Order by name (reverse)");
+            Console.WriteLine("");
+            Console.Write("> ");
+
+            return Enum.Parse<PlayerOrder>(Console.ReadLine());
+        }
+        public int AskForMinScore()
+        {
+            Console.Write("\nMinimum score player should have? ");
+
+            return int.Parse(Console.ReadLine());
+        }
     }
 }

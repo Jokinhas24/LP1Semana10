@@ -1,10 +1,11 @@
-using system;
+using System;
+using System.Collections.Generic;
 
 namespace PlayerManagerMVC
 {
-    interface IView
+    public interface IView
     {
-        void ShowMenu();
+        int ShowMenu();
 
         void EndMessage();
         
@@ -12,10 +13,12 @@ namespace PlayerManagerMVC
 
         void AfterMenu();
 
-        void InsertPlayer();
+        Player InsertPlayer();
 
-        void ListPlayers();
+        void ListPlayers(IEnumerable<Player> playersToList);
 
-        void AskforPlayerOrder();
+        PlayerOrder AskforPlayerOrder();
+
+        int AskForMinScore();
     }
 }
