@@ -11,5 +11,11 @@ namespace PlayerManagerMVC
         void InvalidOption();
 
         void AfterMenu();
+
+        void InsertPlayer();
+
+        void ListPlayers();
+
+        void AskforPlayerOrder();
     }
 }
