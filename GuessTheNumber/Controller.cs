@@ -4,27 +4,37 @@ namespace GuessTheNumber
 {
     public class Controller
     {
+        public Model model;
+
+        public IView view;
+
         private bool guessedCorrectly = false;
 
-        Start(view)
+        public Controller(Model model)
         {
-            view.Welcome()
+            this.model = model;
+        }
+
+        public void Start(IView view)
+        {
+            this.view = view;
+
+            view.Welcome();
 
             int guess;
 
             // Game loop
             while (!guessedCorrectly)
             {
-                Console.Write("Take a guess: ");
-                guess = Convert.ToInt32(Console.ReadLine());
+                guess = view.Guess();
                 model.attempts++;
 
-                if (guess == targetNumber)
+                if (guess == model.targetNumber)
                 {
                     view.Win();
                     guessedCorrectly = true;
                 }
-                else if (guess < targetNumber)
+                else if (guess < model.targetNumber)
                 {
                     view.Low();
                 }
@@ -33,6 +43,8 @@ namespace GuessTheNumber
                     view.High();
                 }
             }
+
+            view.End();
         }
     }
 }

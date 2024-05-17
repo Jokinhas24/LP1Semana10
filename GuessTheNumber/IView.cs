@@ -2,16 +2,18 @@ using System;
 
 namespace GuessTheNumber
 {
-    public interface IView;
+    public interface IView
     {
         void Welcome();
 
-        void Guess();
+        int Guess();
 
         void Win();
 
         void Low();
 
         void High();
+
+        void End();
     }
 }
