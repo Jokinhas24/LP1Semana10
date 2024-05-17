@@ -4,7 +4,7 @@ namespace PlayerManagerMVC
 {
     class View : IView
     {
-        private void ShowMenu()
+        private int ShowMenu()
         {
             Console.WriteLine("Menu");
             Console.WriteLine("----\n");
@@ -14,6 +14,7 @@ namespace PlayerManagerMVC
             Console.WriteLine("4. Sort players");
             Console.WriteLine("0. Quit\n");
             Console.Write("Your choice > ");
+            return int.Parse(Console.ReadLine());
         }
 
         private void EndMessage()
