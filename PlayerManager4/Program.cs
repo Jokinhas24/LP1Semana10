@@ -7,10 +7,23 @@ namespace PlayerManagerMVC
     {
         private static void Main(string[] args)
         {
-            // Create a new instance of the player listing program
+            List<Player> playerlist = new List<Player>()
+            {
+                new Player("Jokinhas", 24),
+                new Player("Bugs", 2)
+                new Player("Cat", 500)
+            }
+
+            // Initialize player comparers
+            compareByName = new CompareByName(true);
+            compareByNameReverse = new CompareByName(false);
+
             Program prog = new Program();
-            // Start the program instance
-            prog.Start();
+
+            controller controller = new controller()
+            View view = new view(controller)
+            
+            controller.Start();
         }
 }
 }

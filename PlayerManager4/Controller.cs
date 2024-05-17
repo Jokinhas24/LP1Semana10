@@ -18,26 +18,6 @@ namespace PlayerManagerMVC
         private readonly IComparer<Player> compareByNameReverse;
 
         /// <summary>
-        /// Creates a new instance of the player listing program.
-        /// </summary>
-        private Program()
-        {
-            // Initialize player comparers
-            compareByName = new CompareByName(true);
-            compareByNameReverse = new CompareByName(false);
-
-            // Initialize the player list with two players using collection
-            // initialization syntax
-            List<Player> playerlist = new List<Player>()
-            {
-                new Player("Jokinhas", 24),
-                new Player("Bugs", 2)
-                new Player("Cat", 500)
-            }
-
-        }
-
-        /// <summary>
         /// Start the player listing program instance
         /// </summary>
         private void Start()
@@ -56,22 +36,22 @@ namespace PlayerManagerMVC
                 {
                     case 1:
                         // Insert player
-                        InsertPlayer();
+                        view.InsertPlayer();
                         break;
                     case 2:
-                        ListPlayers(playerList);
+                        view.ListPlayers(playerList);
                         break;
                     case 3:
-                        ListPlayersWithScoreGreaterThan();
+                        view.ListPlayersWithScoreGreaterThan();
                         break;
                     case 4:
-                        SortPlayerList();
+                        view.SortPlayerList();
                         break;
                     case 0:
-                        View.EndMessage();
+                        view.EndMessage();
                         break;
                     default:
-                        Console.Error.WriteLine("\n>>> Unknown option! <<<\n");
+                        view.InvalidOption();
                         break;
                 }
 
@@ -155,7 +135,7 @@ namespace PlayerManagerMVC
                     playerList.Sort(compareByNameReverse);
                     break;
                 default:
-                    Console.Error.WriteLine("\n>>> Unknown player order! <<<\n");
+                    view.InvalidOption();
                     break;
             }
         }
