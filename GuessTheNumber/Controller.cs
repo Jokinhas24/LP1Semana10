@@ -8,7 +8,7 @@ namespace GuessTheNumber
 
         Start(view)
         {
-            Welcome()
+            view.Welcome()
 
             int guess;
 
@@ -21,18 +21,16 @@ namespace GuessTheNumber
 
                 if (guess == targetNumber)
                 {
-                    Console.WriteLine(
-                        "Congratulations! You guessed the number correctly!");
-                    Console.WriteLine("Number of attempts: " + attempts);
+                    view.Win();
                     guessedCorrectly = true;
                 }
                 else if (guess < targetNumber)
                 {
-                    Console.WriteLine("Too low! Try again.");
+                    view.Low();
                 }
                 else
                 {
-                    Console.WriteLine("Too high! Try again.");
+                    view.High();
                 }
             }
         }
