@@ -10,7 +10,7 @@ namespace ArcadeLog
         // Argumento:
         // args[0]: Caminho para o ficheiro (formato "nome pontuação" por linha)
         // (Score.Name, Score.Score)
-        string[] ReadAllLines(string path);
+        // string[] ReadAllLines(string path);
         private static void Main(string[] args)
         {
             // Lê o Ficheiro e Cria os Scores
