@@ -8,23 +8,32 @@ namespace ArcadeLog
     {
         // Argumento:
         // args[0]: Caminho para o ficheiro (formato "nome pontuação" por linha)
+        string[] ReadAllLines(string path);
         private static void Main(string[] args)
         {
             // Lê o Ficheiro e Cria os Scores
             List<Score> scores = new List<Score>();
-            // CÓDIGO AQUI
+            string s;
+            using StreamReader sr = new StreamReader();
 
             // Ordena os Scores
-            // CÓDIGO AQUI
+            scores.Sort();
 
             // Agrupa por Medalha e Imprime (Gold → Silver → Bronze)
             // Escreve a lista no ficheiro ranking.txt
-            // CÓDIGO AQUI
+            scores.Enqueue(score);
+
+            foreach (string s in scores)
+                {
+                    File.scores(args[0], s + "\n");
+                    Console.WriteLine(s.ToString());
+                }
 
             Console.WriteLine("Ranking guardado em 'ranking.txt'.");
 
             // Ordena por Nome e Escreve em alpha.txt
-            // CÓDIGO AQUI
+            IComparer<Score> comp = new CompareByName(true);
+            scores.Sort(comp);
 
             // Este programa mostra o seguinte no ecrã (exemplo: scores.txt com "Kronos 7400", "Luna 3800", "Rex 520", "Phantom 6100"):
             //
